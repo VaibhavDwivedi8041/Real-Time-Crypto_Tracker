@@ -1,54 +1,81 @@
-# React + TypeScript + Vite
+# Real-Time Crypto Price Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React + Redux Toolkit application that tracks real-time cryptocurrency prices, simulating WebSocket updates.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: UI library
+- **Redux Toolkit**: State management
+- **CSS**: Styling (responsive design)
+- **Simulated WebSocket**: Real-time price updates
 
-## Expanding the ESLint configuration
+## Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Redux Store**:
+   - Single source of truth for the application state
+   - Manages crypto assets data
+   - Handles real-time updates
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. **Components**:
+   - `CryptoTable`: Main component displaying the assets
+   - `MiniChart`: SVG-based chart showing 7-day price history
+
+3. **Services**:
+   - `CryptoWebSocketService`: Simulates WebSocket connection using intervals
+
+## Setup Instructions
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/crypto-price-tracker.git
+   ```
+
+2. Install dependencies:
+   ```
+   cd crypto-price-tracker
+   npm install
+   ```
+
+3. Start the development server:
+   ```
+   npm start
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Features
+
+- **Real-time Updates**: Prices, percentages, and volumes update every 1.5 seconds
+- **Responsive Design**: Works on desktop and mobile devices
+- **Visual Indicators**: Color-coded percentage changes
+- **Mini Charts**: Visual representation of 7-day price history
+
+## Project Structure
+
+```
+src/
+  ├── app/
+  │   └── store.js              # Redux store configuration
+  ├── components/
+  │   ├── CryptoTable.js        # Main table component
+  │   ├── CryptoTable.css
+  │   ├── MiniChart.js          # SVG chart component
+  │   └── MiniChart.css
+  ├── features/
+  │   └── crypto/
+  │       ├── cryptoSlice.js    # Redux slice
+  │       └── initialData.js    # Initial state data
+  ├── services/
+  │   └── cryptoService.js      # Simulated WebSocket service
+  ├── App.js                    # Main App component
+  ├── App.css                   # Global styles
+  └── index.js                  # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Future Enhancements
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Integrate real WebSocket connection to Binance or other exchanges
+2. Add sorting and filtering options
+3. Implement persistent storage with localStorage
+4. Add more detailed charts and statistics
+5. Add unit tests for reducers and selectors

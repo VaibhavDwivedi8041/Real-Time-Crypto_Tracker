@@ -27,7 +27,7 @@ A responsive React + Redux Toolkit application that tracks real-time cryptocurre
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/crypto-price-tracker.git
+   https://github.com/VaibhavDwivedi8041/Real-Time-Crypto_Tracker.git
    ```
 
 2. Install dependencies:
@@ -73,9 +73,10 @@ src/
 ```
 
 ## Future Enhancements
-
 1. Integrate real WebSocket connection to Binance or other exchanges
 2. Add sorting and filtering options
 3. Implement persistent storage with localStorage
 4. Add more detailed charts and statistics
 5. Add unit tests for reducers and selectors
+
+
